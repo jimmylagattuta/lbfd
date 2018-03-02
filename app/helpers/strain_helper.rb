@@ -1,0 +1,2 @@
+module StrainHelper
+end

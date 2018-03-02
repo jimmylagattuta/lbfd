@@ -1,5 +1,34 @@
-<h1>Long Beach Flowers Delivery!</h1>
-
-<div id="app">
+<h1><div id="app">
   {{ message }}
-</div>
+</div></h1>
+<br>
+<h2>Add a Strain</h2>
+<%= form_tag "api/v1/add_strain", method: :post do %>
+<br>
+	Name: <input type="text" name="name">
+<br>	
+	Variety: <input type="text" name="variety">
+<br>
+	Donation G: <input type="text" name="donation_g">
+<br>
+	Donation E: <input type="text" name="donation_e">
+<br>
+	Donation H: <input type="text" name="donation_h">
+<br>
+	Donation O: <input type="text" name="donation_o">
+<br>
+	Image: <input type="text" name="strain_image">
+<br>
+<input type="submit" value="Create Strain">
+<% end %>
+<br>
+
+<br>
+<h2>Strains</h2>
+<% if @strains.length != 0 %>
+	<% @strains.each do |x| %>
+		<%= x.name %><br>
+		<img id="image_loop" src="<%= x.image %>" alt="image">
+		<br>
+	<% end %>
+<% end %>

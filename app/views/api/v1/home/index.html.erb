@@ -22,13 +22,14 @@
 <br>
 
 <br>
-<h2>Strains</h2>
+<h1>Strains</h1>
+<br>
 <% if @strains.length != 0 %>
 	<% @strains.each do |x| %>
-		<%= x.name %> <%= x.variety %> Gr: <%= x.donation_g %> Ei: <%= x.donation_e %> Ha: <%= x.donation_h %> Ou: <%= x.donation_o %><br>
+		<h3><%= x.name %> <%= x.variety %> Gr: <%= x.donation_g %> Ei: <%= x.donation_e %> Ha: <%= x.donation_h %> Ou: <%= x.donation_o %></h3><br>
 		<img id="image_loop" src="<%= x.image %>" alt="image">
 		<br>
-		<h3>Edit <%= x.name %></h3>
+		<p>Edit <%= x.name %></p>
 		<%= form_tag "api/v1/edit_strain/#{x.id}", method: :post do %>
 				Name: <input type="text" value="<%= x.name %>" name="name">
 			<br>	

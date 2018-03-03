@@ -27,8 +27,27 @@
 <h2>Strains</h2>
 <% if @strains.length != 0 %>
 	<% @strains.each do |x| %>
-		<%= x.name %><br>
+		<%= x.name %> <%= x.variety %> Gr: <%= x.donation_g %> Ei: <%= x.donation_e %> Ha: <%= x.donation_h %> Ou: <%= x.donation_o %><br>
 		<img id="image_loop" src="<%= x.image %>" alt="image">
 		<br>
+		<h3>Edit <%= x.name %></h3>
+		<%= form_tag "api/v1/edit_strain/#{x.id}", method: :post do %>
+				Name: <input type="text" value="<%= x.name %>" name="name">
+			<br>	
+				Variety: <input type="text" value="<%= x.variety %>" name="variety">
+			<br>
+				Donation G: <input type="text" value="<%= x.donation_g %>" name="donation_g">
+			<br>
+				Donation E<input type="text" value="<%= x.donation_e %>" name="donation_e">
+			<br>
+				Donation H: <input type="text" value="<%= x.donation_h %>" name="donation_h">
+			<br>
+				Donation O: <input type="text" value="<%= x.donation_o %>" name="donation_o">
+			<br>
+				Image: <input type="text" value="<%= x.image %>" name="strain_image">
+			<br>
+			<input type="submit" value="Update Strain">
+			<% end %>
+			<br>
 	<% end %>
 <% end %>

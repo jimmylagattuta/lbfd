@@ -1,25 +1,45 @@
+<% if current_user && current_user.admin %>
+	<h2>Add a Strain</h2>
+	<%= form_tag "api/v1/add_strain", method: :post do %>
+	<br>
+		Name: <input type="text" name="name">
+	<br>	
+		Variety: <input type="text" name="variety">
+	<br>
+		Donation G: <input type="text" name="donation_g">
+	<br>
+		Donation E: <input type="text" name="donation_e">
+	<br>
+		Donation H: <input type="text" name="donation_h">
+	<br>
+		Donation O: <input type="text" name="donation_o">
+	<br>
+		Image: <input type="text" name="strain_image">
+	<br>
+		Location(Long Beach, Studio City, or LB ST): <input type="text" name="location">
+	<br>
+		Quantity(in grms): <input type="text" name="quantity">
+	<br>
+	<input type="submit" value="Create Strain">
+	<% end %>
+	<br>
+	<%= button_to "Signout Admin", "/api/v1/signout", method: :get %>
+	<br>
+<% end %>
 
 <br>
-<h2>Add a Strain</h2>
-<%= form_tag "api/v1/add_strain", method: :post do %>
-<br>
-	Name: <input type="text" name="name">
-<br>	
-	Variety: <input type="text" name="variety">
-<br>
-	Donation G: <input type="text" name="donation_g">
-<br>
-	Donation E: <input type="text" name="donation_e">
-<br>
-	Donation H: <input type="text" name="donation_h">
-<br>
-	Donation O: <input type="text" name="donation_o">
-<br>
-	Image: <input type="text" name="strain_image">
-<br>
-<input type="submit" value="Create Strain">
+<% if !current_user %>
+	<p>Admin Signin</p>
+	<%= form_tag "/api/v1/home/signin", method: :post do %>
+		Username: <input type="text" name="username">
+		<br>
+		Password: <input type="passowrd" name="password">
+		<br>
+		<input type="submit" value="Submit">
+	<% end %>
+	<br>
 <% end %>
-<br>
+
 
 <br>
 <h1>Strains</h1>
@@ -29,23 +49,29 @@
 		<h3><%= x.name %> <%= x.variety %> Gr: <%= x.donation_g %> Ei: <%= x.donation_e %> Ha: <%= x.donation_h %> Ou: <%= x.donation_o %></h3><br>
 		<img id="image_loop" src="<%= x.image %>" alt="image">
 		<br>
-		<p>Edit <%= x.name %></p>
-		<%= form_tag "api/v1/edit_strain/#{x.id}", method: :post do %>
-				Name: <input type="text" value="<%= x.name %>" name="name">
-			<br>	
-				Variety: <input type="text" value="<%= x.variety %>" name="variety">
-			<br>
-				Donation G: <input type="text" value="<%= x.donation_g %>" name="donation_g">
-			<br>
-				Donation E<input type="text" value="<%= x.donation_e %>" name="donation_e">
-			<br>
-				Donation H: <input type="text" value="<%= x.donation_h %>" name="donation_h">
-			<br>
-				Donation O: <input type="text" value="<%= x.donation_o %>" name="donation_o">
-			<br>
-				Image: <input type="text" value="<%= x.image %>" name="strain_image">
-			<br>
-			<input type="submit" value="Update Strain">
+		<% if current_user && current_user.admin %>
+			<p>Edit <%= x.name %></p>
+			<%= form_tag "api/v1/edit_strain/#{x.id}", method: :post do %>
+					Name: <input type="text" value="<%= x.name %>" name="name">
+				<br>	
+					Variety: <input type="text" value="<%= x.variety %>" name="variety">
+				<br>
+					Donation G: <input type="text" value="<%= x.donation_g %>" name="donation_g">
+				<br>
+					Donation E<input type="text" value="<%= x.donation_e %>" name="donation_e">
+				<br>
+					Donation H: <input type="text" value="<%= x.donation_h %>" name="donation_h">
+				<br>
+					Donation O: <input type="text" value="<%= x.donation_o %>" name="donation_o">
+				<br>
+					Image: <input type="text" value="<%= x.image %>" name="strain_image">
+				<br>
+					Location: <input type="text" value="<%= x.location %>" name="location">
+				<br>
+					Quantity(in grms): <input type="text" value="<%= x.quantity %>" name="quantity">
+				<br>
+				<input type="submit" value="Update Strain">
+				<% end %>
 			<% end %>
 			<br>
 	<% end %>

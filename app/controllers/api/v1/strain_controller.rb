@@ -8,15 +8,19 @@ class Api::V1::StrainController < ApplicationController
 		donation_h = params['donation_h']
 		donation_o = params['donation_o']
 		i = params['strain_image']
+		location = params['location']
+		q = params['quantity']
 		new_strain = Strain.create(name: n, 
 								   variety: v,
 								   donation_o: donation_o,
 								   donation_h: donation_h,
 								   donation_g: donation_g,
 								   donation_e: donation_e,
-								   image: i
+								   image: i,
+								   location: location,
+								   quantity: q
 								)
-		redirect_to 'index.html.erb'
+		redirect_to '/'
 	end
 
 	def edit_strain
@@ -28,6 +32,9 @@ class Api::V1::StrainController < ApplicationController
 		donation_h = params['donation_h']
 		donation_o = params['donation_o']
 		i = params['strain_image']
+		location = params['location']
+		q = params['quantity']
+
 		strain.name = n
 		strain.variety = v
 		strain.donation_g = donation_g
@@ -35,6 +42,8 @@ class Api::V1::StrainController < ApplicationController
 		strain.donation_h = donation_h	
 		strain.donation_o = donation_o
 		strain.image = i
+		strain.location = location
+		strain.quantity = q
 		strain.save
 		if strain.save
 			puts "*" * 100

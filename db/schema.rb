@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180302223204) do
+ActiveRecord::Schema.define(version: 20180305004909) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,23 +18,43 @@ ActiveRecord::Schema.define(version: 20180302223204) do
   create_table "items", force: :cascade do |t|
     t.string   "name"
     t.string   "description"
-    t.decimal  "cost",        precision: 9, scale: 2
-    t.decimal  "quantity",    precision: 9, scale: 2
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.decimal  "cost",          precision: 9, scale: 2
+    t.decimal  "quantity",      precision: 9, scale: 2
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
+    t.integer  "location_id"
+    t.boolean  "all_locations"
+    t.string   "location"
+  end
+
+  create_table "locations", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "strains", force: :cascade do |t|
     t.string   "name"
     t.string   "variety"
-    t.decimal  "quantity",   precision: 9, scale: 2
-    t.datetime "created_at",                         null: false
-    t.datetime "updated_at",                         null: false
+    t.decimal  "quantity",      precision: 9, scale: 2
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
     t.integer  "donation_g"
     t.integer  "donation_e"
     t.integer  "donation_h"
     t.string   "image"
     t.integer  "donation_o"
+    t.integer  "location_id"
+    t.boolean  "all_locations"
+    t.string   "location"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string   "username"
+    t.string   "password_digest"
+    t.boolean  "admin"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
 end

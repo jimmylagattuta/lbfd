@@ -1,5 +1,7 @@
 class Api::V1::StrainController < ApplicationController
 	# https://cdn.pixabay.com/photo/2017/02/28/14/50/weed-2105966__340.jpg
+  	protect_from_forgery with: :null_session
+	skip_before_action :verify_authenticity_token
 	def add_strain
 		n = params['name']
 		v = params['variety']

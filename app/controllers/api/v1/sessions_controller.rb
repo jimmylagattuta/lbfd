@@ -1,5 +1,6 @@
 class Api::V1::SessionsController < ApplicationController
-
+  	protect_from_forgery with: :null_session
+	skip_before_action :verify_authenticity_token
 	def new
 	end
 

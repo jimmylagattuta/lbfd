@@ -1,4 +1,6 @@
 class Api::V1::ItemController < ApplicationController
+  	protect_from_forgery with: :null_session
+	skip_before_action :verify_authenticity_token
 	def add_item
 		n = params['name']
 		d = params['description']

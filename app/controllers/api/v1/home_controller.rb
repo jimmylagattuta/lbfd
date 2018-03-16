@@ -1,4 +1,6 @@
 class Api::V1::HomeController < ApplicationController
+  	protect_from_forgery with: :null_session
+	skip_before_action :verify_authenticity_token
 	
 	def index 
 		@strains = Strain.all

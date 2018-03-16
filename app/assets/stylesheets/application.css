@@ -18,3 +18,18 @@
 #image_loop {
 	width: 300px;
 }
+
+#homeindex {
+	margin: 40px;
+}
+
+#itemBorder {
+    border-style: solid;
+    border-width: 5px;
+    width: 300px;
+    padding: 25px;
+}
+
+#header {
+	text-decoration: underline;
+}

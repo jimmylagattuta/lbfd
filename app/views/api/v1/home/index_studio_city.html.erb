@@ -9,7 +9,7 @@
 	<% if @indicas.length > 0 %>
 		<% @indicas.each do |x| %>
 			<% if x.quantity > 0 %>
-				<h4><%= x.name %> <%= x.variety %> Gr: <%= x.donation_g %> Ei: <%= x.donation_e %> Ha: <%= x.donation_h %> Ou: <%= x.donation_o %></h4><br>
+				<h4><%= x.name %> Gr: <%= x.donation_g %> Ei: <%= x.donation_e %> Ha: <%= x.donation_h %> Ou: <%= x.donation_o %></h4><br>
 				<img id="image_loop" src="<%= x.image %>" alt="image">
 			<% end %>
 			<br>
@@ -46,7 +46,7 @@
 	<% if @sativas.length > 0 %>
 		<% @sativas.each do |x| %>
 			<% if x.quantity > 0 %>
-				<h4><%= x.name %> <%= x.variety %> Gr: <%= x.donation_g %> Ei: <%= x.donation_e %> Ha: <%= x.donation_h %> Ou: <%= x.donation_o %></h4><br>
+				<h4><%= x.name %> Gr: <%= x.donation_g %> Ei: <%= x.donation_e %> Ha: <%= x.donation_h %> Ou: <%= x.donation_o %></h4><br>
 				<img id="image_loop" src="<%= x.image %>" alt="image">
 			<% end %>
 			<br>
@@ -83,7 +83,7 @@
 	<% if @concentrates.length > 0 %>
 		<% @concentrates.each do |x| %>
 			<% if x.quantity > 0 %>
-				<h4><%= x.name %> <%= x.variety %> Gr: <%= x.donation_g %> Ei: <%= x.donation_e %> Ha: <%= x.donation_h %> Ou: <%= x.donation_o %></h4><br>
+				<h4><%= x.name %> Gr: <%= x.donation_g %> Ei: <%= x.donation_e %> Ha: <%= x.donation_h %> Ou: <%= x.donation_o %></h4><br>
 				<img id="image_loop" src="<%= x.image %>" alt="image">
 			<% end %>
 			<br>
@@ -120,7 +120,7 @@
 	<% if @edibles.length > 0 %>
 		<% @edibles.each do |x| %>
 			<% if x.quantity > 0 %>
-				<h4><%= x.name %> <%= x.variety %> Gr: <%= x.donation_g %> Ei: <%= x.donation_e %> Ha: <%= x.donation_h %> Ou: <%= x.donation_o %></h4><br>
+				<h4><%= x.name %> Gr: <%= x.donation_g %> Ei: <%= x.donation_e %> Ha: <%= x.donation_h %> Ou: <%= x.donation_o %></h4><br>
 				<img id="image_loop" src="<%= x.image %>" alt="image">
 			<% end %>
 			<br>

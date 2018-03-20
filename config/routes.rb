@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  root to: "api/v1/home#index"
+  root to: "api/v1/home#index_home"
 
+  get "/api/v1/index_home" => "api/v1/home#index_home"
   get "/api/v1/home" => "api/v1/home#index"
   get "/api/v1/home_studio_city" => "api/v1/home#index_studio_city"
 
